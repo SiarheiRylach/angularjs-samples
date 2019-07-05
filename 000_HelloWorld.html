@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+    ng-app - attribute indicates that html element includes module 
+    which should be compiled and handled by angular
+-->
+<html lang="en" ng-app="helloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script>
+        //model
+        const model = "Hello World!!!!";
+
+        //AngularJS app consist to one or few modules
+        //angular.module - creation of new angularJS module
+        //first parameter - name of module for getting or creation
+        //second parameter - set of modules(dependencies) for new module 
+        const helloWorldApp = angular.module("helloWorldApp", []);
+
+        //controller
+        //AngularJS variables, which start with $, are embedded elements of framework
+        //$scope is used to send data inside view
+        //.contoller - method which creates controller
+        //first parameter - name of controller(<Name>Ctrl - code convention about naming of controllers)
+        //second parameter - function of controller
+        helloWorldApp.controller("HelloWorldCtrl", $scope => {
+            $scope.message = model;
+        });
+
+
+    </script>
+</head>
+
+<!-- ng-controller - attribute which determines area of markup, where controller will work -->
+<body ng-controller="HelloWorldCtrl">
+    <h1>{{message}}</h1>
+</body>
+</html>

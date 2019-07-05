@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="helloWorldApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Get Input</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script>
+        //model
+        const model = "Hello World!!!!";
+
+        const helloWorldApp = angular.module("helloWorldApp", []);
+
+        //controller
+        helloWorldApp.controller("HelloWorldCtrl", $scope => {
+            $scope.message = model;
+            $scope.text = "default";
+
+            //behavior
+            $scope.clickHandler = function () {
+                $scope.message = $scope.text;
+            }
+        });
+
+
+    </script>
+</head>
+
+<body ng-controller="HelloWorldCtrl">
+    <h1>{{message}}</h1>
+    <!--ng-model - indicates that input connected with property $scope.text-->
+    <input ng-model="text"/>
+    <!--ng-click - determines handler of click event-->
+    <button ng-click="clickHandler()">Update</button>
+</body>
+</html>
